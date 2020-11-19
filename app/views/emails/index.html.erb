@@ -1,0 +1,26 @@
+<table id="target">
+    <% Email.all.each do |email|  %>
+    <tr id="">
+        <td>
+      <%= email.object %>
+    </td>
+    <td>
+        <%= link_to "Voir l'email", email_path(email), class: "btn btn-info", remote: true %>
+    </td>
+    <td id="email-show<%= email.id %>">
+    </td>
+  </tr>
+  <% end %>
+  <td id = "email-slot">
+  </td >
+</table>
+
+<br />
+
+<%= link_to "Refresh", emails_path %>
+
+<br />
+
+<%= form_tag(emails_path, method: "post", remote: true) do %>
+    <%= submit_tag("Add email", class: "btn btn-info") %>
+<% end %>
